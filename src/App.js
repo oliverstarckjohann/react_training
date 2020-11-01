@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import styled from "styled-components/macro";
+
+const TaskBoard = styled.div`
+  font-family: sans-serif;
+  width: 180px;
+  background-color: #fbf6b9;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+`;
+
+let taskBoardData = [{ data: "home" }, { data: "outside" }];
 
 function App() {
+  const [todos, setTodos] = useState(taskBoardData);
+
+  todos.forEach((todo) => console.log(`${todo.data}` + " from foreach"));
+  todos.map((todo) => console.log(`${todo.data}` + " from map"));
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <TaskBoard className="App">
+        <h2>Content from Object:</h2>
+        {todos.map((todo) => (
+          <p>{todo.data} maped from useState</p>
+        ))}
+        <p>{todos[0].data} direct from object accessed</p>
+        <p>{todos[1].data} direct from object accessed</p>
+      </TaskBoard>
+    </>
   );
 }
 
