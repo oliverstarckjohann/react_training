@@ -10,7 +10,8 @@ export default function JournalForm({ onSubmit }) {
         /* preventDefault verhindert die Übergabe der Werte an die URL, 
             die eigentliche HTML Submit Funktion */
         event.preventDefault();
-        /* onSubmit ist die Funktion des Formulares die die Funktion onFormSubmit ausführt */
+        /* onSubmit ist die Funktion die über export default JournalForm an die App übergeben wird
+        und dabei die Werte des Objektes an die App übergibt. */
         onSubmit({ 
                 "date": date,
                 "title": title,
