@@ -4,7 +4,9 @@ import JournalForm from "./components/JournalForm";
 
 export default function App() {
   const [journals, setJournals] = useState([{date: '19.06.2022', title: 'Dancing in Purgatory.', content: 'Nice Location, nice People.'},{date: '20.06.2022', title: 'Working in the office', content: 'Happy Monday!'}]);
-
+ 
+  /* Hier ergänzen wir Daten in das State Array, und spreaden den Stand des Arrays davor,
+    sonst würden wir den State journals einfach mit dem neuen Wert überschreiben */
   function addJournal(journal){
     setJournals([...journals, journal]);
   }
@@ -14,6 +16,7 @@ export default function App() {
       <ContentBoard className="App">
         <h1>MobileJournal</h1>
         <ul>
+        {/* .map itteriert durch das Array journals und gibt uns für jedes Element journal die Werte*/}
         {journals.map(function(journal){
           return(
             <li>
@@ -25,6 +28,9 @@ export default function App() {
         })}
         </ul> 
         <h2>New Entry:</h2>
+        {/* hier rendern wir die Komponente JournalForm und holen uns die Funktion onSubmit 
+            mit den Returnwerten
+            und übergeben diese beim Aufruf der Funktion adddJournal*/}
         <JournalForm onSubmit={addJournal} /> 
       </ContentBoard>
     </>

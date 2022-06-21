@@ -7,7 +7,10 @@ export default function JournalForm({ onSubmit }) {
     const [content, setContent] = useState('Surfing Bird Party');
 
     function onFormSubmit(event) {
+        /* preventDefault verhindert die Übergabe der Werte an die URL, 
+            die eigentliche HTML Submit Funktion */
         event.preventDefault();
+        /* onSubmit ist die Funktion des Formulares die die Funktion onFormSubmit ausführt */
         onSubmit({ 
                 "date": date,
                 "title": title,
@@ -15,16 +18,19 @@ export default function JournalForm({ onSubmit }) {
             });
     }
 
-    // Hilfsfunktion, denn onChange übergibt einen Event, wir wollen den value
+    /* Hilfsfunktion, denn onChange übergibt einen Event, wir wollen den Wert */
     function onDateChange(event){
+        /* Ruft die Funktion setDate auf und übergibt den Wert(value) aus dem Input-Feld */
         setDate(event.target.value);
     }
-    // Hilfsfunktion, denn onChange übergibt einen Event, wir wollen den value
+    /* Hilfsfunktion, denn onChange übergibt einen Event, wir wollen den Wert */
     function onTitleChange(event){
+        /* Ruft die Funktion setTitle auf und übergibt den Wert(value) aus dem Input-Feld */
         setTitle(event.target.value);
     }
-    // Hilfsfunktion, denn onChange übergibt einen Event, wir wollen den value
+    /* Hilfsfunktion, denn onChange übergibt einen Event, wir wollen den Wert */
     function onContentChange(event){
+        /* Ruft die Funktion setContent auf und übergibt den Wert(value) aus dem Input-Feld */
         setContent(event.target.value);
     }
 
