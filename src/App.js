@@ -1,25 +1,31 @@
 import React, { useState } from "react";
 import styled from "styled-components/macro";
-
-let appDataSource = [{ datakey: "home" }, { datakey: "outside" }];
+import JournalForm from "./components/JournalForm";
 
 export default function App() {
-  const [statedata, setStatedata] = useState(appDataSource);
+  const [journals, setJournals] = useState([{date: '19.06.2022', title: 'Dancing in Purgatory.', content: 'Nice Location, nice People.'},{date: '20.06.2022', title: 'Working in the office', content: 'Happy Monday!'}]);
 
-  statedata.forEach((dataitem) =>
-    console.log(`${dataitem.datakey}` + " from foreach")
-  );
-  statedata.map((dataitem) => console.log(`${dataitem.datakey}` + " from map"));
+  function addJournal(journal){
+    setJournals([...journals, journal]);
+  }
 
   return (
     <>
       <ContentBoard className="App">
-        <h2>Content from stateArray:</h2>
-        {statedata.map((dataitem) => (
-          <p>{dataitem.datakey} maped from state (statedata)</p>
-        ))}
-        <p>{statedata[0].dataitem} direct from array accessed (indexvalue)</p>
-        <p>{statedata[1].dataitem} direct from array accessed (indexvalue)</p>
+        <h1>MobileJournal</h1>
+        <ul>
+        {journals.map(function(journal){
+          return(
+            <li>
+            <p>{journal.date}</p>
+            <h2>{journal.title}</h2>
+            <p>{journal.content}</p>
+            </li>
+          );
+        })}
+        </ul> 
+        <h2>New Entry:</h2>
+        <JournalForm onSubmit={addJournal} /> 
       </ContentBoard>
     </>
   );
@@ -27,8 +33,9 @@ export default function App() {
 
 const ContentBoard = styled.div`
   font-family: sans-serif;
-  width: 180px;
-  background-color: #fbf6b9;
+  width: 380px;
+  background-color: #FFFFFF;
+  box-shadow 0.4em 0.4em 1em #F5F5F5;
   border-radius: 10px;
   margin-bottom: 10px;
   padding: 10px;
