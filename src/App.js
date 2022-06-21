@@ -30,7 +30,7 @@ export default function App() {
         <h2>New Entry:</h2>
         {/* hier rendern wir die Komponente JournalForm und holen uns die Funktion onSubmit 
             mit den Returnwerten
-            und übergeben diese beim Aufruf der Funktion adddJournal*/}
+            und übergeben diese beim Aufruf der Funktion adddJournal (Inversion of Control) */}
         <JournalForm onSubmit={addJournal} /> 
       </ContentBoard>
     </>
