@@ -2,9 +2,9 @@ import { useState } from "react";
 import styled from "styled-components";
 
 export default function JournalForm({ onSubmit }) {
-    const [date, setDate] = useState('04.08.2022');
-    const [title, setTitle] = useState('Ollis Birthday');
-    const [content, setContent] = useState('Surfing Bird Party');
+    const [date, setDate] = useState('');
+    const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
 
     function onFormSubmit(event) {
         /* preventDefault verhindert die Übergabe der Werte an die URL, 
@@ -39,9 +39,9 @@ export default function JournalForm({ onSubmit }) {
     <>    
     <NewjournalForm onSubmit={onFormSubmit}>
         <NewjournalFormList>
-        <NewjournalFormListItem><input type="text" name="date" value={date} onChange={onDateChange}></input></NewjournalFormListItem>
-        <NewjournalFormListItem><input type="text" name="title" value={title} onChange={onTitleChange}></input></NewjournalFormListItem>
-        <NewjournalFormListItem><input type="text" name="content" value={content} onChange={onContentChange}></input></NewjournalFormListItem>
+        <NewjournalFormListItem><input type="date" name="date" value={date} onChange={onDateChange} required></input></NewjournalFormListItem>
+        <NewjournalFormListItem><input type="text" name="title" value={title} onChange={onTitleChange} required></input></NewjournalFormListItem>
+        <NewjournalFormListItem><input type="text" name="content" value={content} onChange={onContentChange} required></input></NewjournalFormListItem>
         <FormSubmitButton type="submit">New Journal</FormSubmitButton>
         </NewjournalFormList>
     </NewjournalForm>

@@ -4,7 +4,7 @@ import JournalForm from "./components/JournalForm";
 import JournalListItem from "./components/JournalListItem";
 
 export default function App() {
-  const [journals, setJournals] = useState([{date: '19.06.2022', title: 'Dancing in Purgatory.', content: 'Nice Location, nice People.'},{date: '20.06.2022', title: 'Working in the office', content: 'Happy Monday!'}]);
+  const [journals, setJournals] = useState([{date: '2022-06-19', title: 'Dancing in Purgatory.', content: 'Nice Location, nice People.'},{date: '2022-06-20', title: 'Working in the office', content: 'Happy Monday!'}]);
  
   /* Hier ergänzen wir Daten in das State Array, und spreaden den Stand des Arrays davor,
     sonst würden wir den State journals einfach mit dem neuen Wert überschreiben */
