@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components/macro";
 import JournalForm from "./components/JournalForm";
+import JournalListItem from "./components/JournalListItem";
 
 export default function App() {
   const [journals, setJournals] = useState([{date: '19.06.2022', title: 'Dancing in Purgatory.', content: 'Nice Location, nice People.'},{date: '20.06.2022', title: 'Working in the office', content: 'Happy Monday!'}]);
@@ -18,15 +19,14 @@ export default function App() {
         <ul>
         {/* .map itteriert durch das Array journals und gibt uns für jedes Element journal die Werte*/}
         {journals.map(function(journal){
-          return(
-            <li>
-            <p>{journal.date}</p>
-            <h2>{journal.title}</h2>
-            <p>{journal.content}</p>
-            </li>
-          );
+          /* Wir returnen hier eine Komponente, dieser übergeben wir ein prop(journalEntry), 
+          dem wir jeweils den itterierten Wert(journal) aus dem State(journals) zuweisen */
+          return <JournalListItem journalEntry={journal} /> 
+        
         })}
         </ul> 
+
+
         <h2>New Entry:</h2>
         {/* hier rendern wir die Komponente JournalForm und holen uns die Funktion onSubmit 
             mit den Returnwerten
