@@ -1,7 +1,14 @@
 import React, { useState } from "react";
+import { 
+        BrowserRouter,
+        Routes, 
+        Route, 
+        Link 
+        } from "react-router-dom";
 import styled from "styled-components/macro";
 import JournalForm from "./components/JournalForm";
 import JournalListItem from "./components/JournalListItem";
+
 
 export default function App() {
   const [journals, setJournals] = useState([{date: '2022-06-19', title: 'Dancing in Purgatory.', content: 'Nice Location, nice People.'},{date: '2022-06-20', title: 'Working in the office', content: 'Happy Monday!'}]);
@@ -14,8 +21,20 @@ export default function App() {
 
   return (
     <>
+      <BrowserRouter>
+      {/* Hier lege ich das Menü an. Der Router nutzt die Link to Parameter für das URL Handling im Browser */}
+      <nav>
+        <Link to="/">Home</Link> |{" "}
+        <Link to="journalform">New Entry</Link>
+      </nav>
+      
       <ContentBoard className="App">
-        <h1>MobileJournal</h1>
+      <h1>MobileJournal</h1>
+      <Routes>
+      <Route path="journalform" element={<JournalForm onSubmit={addJournal} />}>
+      </Route>
+      </Routes>
+        
         <ul>
         {/* .map itteriert durch das Array journals und gibt uns für jedes Element journal die Werte*/}
         {journals.map(function(journal){
@@ -27,12 +46,12 @@ export default function App() {
         </ul> 
 
 
-        <h2>New Entry:</h2>
+        
         {/* hier rendern wir die Komponente JournalForm und holen uns die Funktion onSubmit 
             mit den Returnwerten
             und übergeben diese beim Aufruf der Funktion adddJournal (Inversion of Control) */}
-        <JournalForm onSubmit={addJournal} /> 
       </ContentBoard>
+      </BrowserRouter>
     </>
   );
 }

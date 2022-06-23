@@ -36,7 +36,8 @@ export default function JournalForm({ onSubmit }) {
     }
 
     return(
-    <>    
+    <>
+    <h2>New Entry:</h2>    
     <NewjournalForm onSubmit={onFormSubmit}>
         <NewjournalFormList>
         <NewjournalFormListItem><input type="date" name="date" value={date} onChange={onDateChange} required></input></NewjournalFormListItem>
